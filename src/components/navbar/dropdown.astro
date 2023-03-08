@@ -2,10 +2,9 @@
 const { title, lastItem, children, itemPath } = Astro.props;
 ---
 
-<li @mouseleave="open = false" class="relative" x-data="{ open: false }">
-  <a
-    href={itemPath}
-    @mouseenter="open = !open"
+<li @click.away="open = false" class="relative" x-data="{ open: false }">
+  <button
+    @click="open = !open"
     class="flex items-center gap-1 w-full lg:w-auto lg:px-3 py-2 text-gray-600 hover:text-gray-900">
     <span>{title}</span>
     <svg
@@ -21,7 +20,7 @@ const { title, lastItem, children, itemPath } = Astro.props;
         stroke-linejoin="round"
         d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
     </svg>
-  </a>
+  </button>
   <div
     x-cloak
     x-show="open"
