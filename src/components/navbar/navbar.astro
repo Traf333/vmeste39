@@ -2,33 +2,41 @@
 import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
+import logoImage from "assets/logo.png";
+import { Image } from "@astrojs/image/components";
 
 const menuitems = [
   {
-    title: "Features",
-    path: "#",
+    title: "О Фонде",
+    path: "/about",
     children: [
-      { title: "Action", path: "#" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
+      { title: "Документы", path: "/documents" },
+      { title: "Отчеты", path: "/reports" },
+      { title: "Контакты", path: "/contact" },
     ],
   },
   {
-    title: "Pricing",
-    path: "/pricing",
+    title: "Наши Подопечные",
+    path: "/pets",
   },
   {
-    title: "About",
-    path: "/about",
+    title: "Как Помочь",
+    path: "/donation",
+    children: [
+      { title: "Документы", path: "/donation#items" },
+      { title: "Отчеты", path: "/donation#food" },
+      { title: "Контакты", path: "/donation#hands" },
+    ]
   },
   {
-    title: "Blog",
-    path: "/blog",
+    title: "Новости",
+    path: "/news",
   },
-  {
-    title: "Contact",
-    path: "/contact",
-  },
+
+  // {
+  //   title: "Contact",
+  //   path: "/contact",
+  // },
 ];
 ---
 
@@ -38,10 +46,17 @@ const menuitems = [
     x-data="{ open: false }"
     x-init="$watch('open', value => console.log(value))">
     <div class="flex w-full lg:w-auto items-center justify-between">
-      <a href="/" class="text-lg"
-        ><span class="font-bold text-slate-800">Astro</span><span
+      <a href="/" class="text-lg">
+        <Image
+          src={logoImage}
+          width={100}
+          format="avif"
+          alt="Team"
+          class="w-full h-full object-cover rounded transition  group-hover:-translate-y-1 group-hover:shadow-xl"
+        />
+        <!-- <span class="font-bold text-slate-800">Astro</span><span
           class="text-slate-500">ship</span
-        >
+        > -->
       </a>
       <div class="block lg:hidden">
         <button @click="open = !open" class="text-gray-800">
@@ -80,6 +95,7 @@ const menuitems = [
                   title={item.title}
                   children={item.children}
                   lastItem={index === menuitems.length - 1}
+                  itemPath={item.path}
                 />
               )}
 
@@ -101,11 +117,11 @@ const menuitems = [
         <Link href="#" size="md" block>Sign up</Link>
       </div>
     </nav>
-    <div>
+    <!-- <div>
       <div class="hidden lg:flex items-center gap-4">
         <a href="#">Log in</a>
         <Link href="#" size="md">Sign up</Link>
       </div>
-    </div>
+    </div> -->
   </header>
 </Container>
