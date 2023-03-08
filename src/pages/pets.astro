@@ -3,36 +3,35 @@ import { Image } from "@astrojs/image/components";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
+import { getPosts } from "@lib/api";
 import { getFormattedDate } from "@utils/all";
 import { log } from "astro/dist/core/logger/core";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
-);
-console.log(posts[0].frontmatter.image);
+const data = (await getPosts());
+console.log(data);
+const posts = data.posts
 ---
 
 <Layout title="Наши Подопечные">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Наши Подопечные</Fragment>
-      <Fragment slot="desc"
-        >We write about building startups and thoughts going on our mind.</Fragment
-      >
+      <Fragment slot="desc">
+        Группа занимается помощью бездомным животным г. Калининграда и Калининградской области.
+За редким исключением это могут быть домашние животные.
+        </Fragment>
     </Sectionhead>
-    <main class="mt-16">
+    <main class="mt-16 mb-16">
       <ul class="grid gap-16 max-w-4xl mx-auto">
         {
           posts.map((post) => (
             <li>
-              <a href={post.url}>
+              <a href={post.slug}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <div>
                     <Image
-                      src={post.frontmatter.image}
+                      src={post.coverImage.url}
                       alt="Thumbnail"
                       width={600}
                       format="avif"
@@ -42,24 +41,14 @@ console.log(posts[0].frontmatter.image);
                   </div>
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {post.frontmatter.category}
+                      20000 of 3000000
                     </span>
 
                     <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {post.frontmatter.title}
+                      {post.title}
                     </h2>
 
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
-                        {post.frontmatter.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
-                      <time
-                        class="text-gray-400"
-                        datetime={post.frontmatter.publishDate}>
-                        {getFormattedDate(post.frontmatter.publishDate)}
-                      </time>
-                    </div>
+
                   </div>
                 </div>
               </a>
