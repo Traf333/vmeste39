@@ -7,10 +7,8 @@ import { getPosts } from "@lib/api";
 import { getFormattedDate } from "@utils/all";
 import { log } from "astro/dist/core/logger/core";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const data = (await getPosts());
-console.log(data);
-const posts = data.posts
+
+const {posts} = (await getPosts());
 ---
 
 <Layout title="Наши Подопечные">
@@ -27,7 +25,7 @@ const posts = data.posts
         {
           posts.map((post) => (
             <li>
-              <a href={post.slug}>
+              <a href={`/fundrasing/${post.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <div>
                     <Image

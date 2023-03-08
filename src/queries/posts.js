@@ -28,33 +28,10 @@ export const postQuery = gql`
         post(where: {slug: $slug}) {
             title
             slug
-            category
-            metaDescription
-            metaKeywords
-            metaTitle
-            publishedDate
-            cover {
-                url
-            }
-            content {
-                html
-            }
-            author {
-                name
-                bio
-                photo {
-                    url
-                }
-            }
-            
-        }
-        content(where: { type: "posts" }) {
-            bannerText
-            bannerTitle
-            bannerImage {
+            content
+            coverImage {
                 url
             }
         }
-
     }
 `
