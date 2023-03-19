@@ -1,0 +1,59 @@
+---
+import { Image } from "@astrojs/image/components";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getPosts } from "@lib/api";
+import { getFormattedDate } from "@utils/all";
+import { log } from "astro/dist/core/logger/core";
+
+
+const {posts} = (await getPosts());
+---
+
+<Layout title="Наши Подопечные">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Наши Подопечные</Fragment>
+      <Fragment slot="desc">
+        Группа занимается помощью бездомным животным г. Калининграда и Калининградской области.
+За редким исключением это могут быть домашние животные.
+        </Fragment>
+    </Sectionhead>
+    <main class="mt-16 mb-16">
+      <ul class="grid gap-16 max-w-4xl mx-auto">
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/fundrasing/${post.slug}`}>
+                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                  <div>
+                    <Image
+                      src={post.coverImage.url}
+                      alt="Thumbnail"
+                      width={600}
+                      format="avif"
+                      aspectRatio="16:9"
+                      class="w-full rounded-md"
+                    />
+                  </div>
+                  <div>
+                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                      20000 of 3000000
+                    </span>
+
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                      {post.title}
+                    </h2>
+
+
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout>
