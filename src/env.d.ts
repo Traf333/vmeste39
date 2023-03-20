@@ -13,6 +13,7 @@ export interface IProject {
 export interface IPost {
     title: string;
     content: string;
+    imageCover: IPicture;
     slug: string;
 }
 export interface IPet {

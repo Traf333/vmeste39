@@ -6,24 +6,21 @@ import { getPets } from "@lib/api";
 const {pets} = (await getPets());
 let currentIndex = 2
 const pet = pets[currentIndex]
-setInterval(() =>  {
-  currentIndex = (currentIndex + 1) % pets.length
-}, 5000)
+
 ---
 
 <div class="swiper">
   <div class="swiper-wrapper">
-
-      <div class="swiper-slide">
-        <img
-            src={pet.picture.url}
-            alt={pet.name}
-            // width={600}
-            // format="avif"
-            // aspectRatio="16:9"
-            class="rounded-md"
-        />
-        <h4>{pet.name}</h4>
-      </div>
+    <div class="swiper-slide">
+      <Image
+          src={pet.picture.url}
+          alt={pet.name}
+          height={400}
+          width="auto"
+          format="avif"
+          class="rounded-md"
+      />
+      <h4>{pet.name}</h4>
+    </div>
   </div>
 </div>
