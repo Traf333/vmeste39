@@ -25,7 +25,7 @@ const { title, lastItem, children, itemPath } = Astro.props;
     x-cloak
     x-show="open"
     class:list={[
-      "lg:absolute  w-full  lg:w-48",
+      "lg:absolute  w-full  lg:w-48 lg:z-30",
       lastItem ? "lg:right-0 origin-top-right" : "lg:left-0 origin-top-left",
     ]}>
     <div

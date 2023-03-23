@@ -1,28 +1,26 @@
 ---
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
-import Swiper from "@components/swiper.astro";
+import Swiper from "@components/swiper.svelte";
+import { getPets } from "@lib/api";
+
+const { pets } = await getPets();
 ---
 
-<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-8">
-  <Swiper />
+<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-8 gap-8">
   <div>
     <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight">
       Мы помогаем большим песикам
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      здесь краткая информация о фонде. Что, зачем и почему это важно. Справа будет слайдер с собаками нашедшими дом или же собаками которым хорошо живется с фондом
+      Благотворительный фонд «Поможем вместе» заботится о больших пёсиках с 2014
+      года. Это настоящий дом для кавказских овчарок и алабаев, оставшихся по
+      разным причинам без хозяев. На данный момент фонд заботится о 150
+      подопечных: кормит, лечит и ищет им постоянных владельцев.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#">Поддержать Фонд</Link
-      >
-      <Link
-        href="/news"
-        size="lg"
-        style="outline"
-        target="_blank">К Новостям</Link
-      >
+      <Link href="/contact" size="lg" style="outline">Стать Опекуном</Link>
     </div>
   </div>
+  <Swiper client:load pets={pets} />
 </main>

@@ -10,7 +10,11 @@ import Button from "./ui/button.astro";
   id="form"
   class="needs-validation"
   novalidate>
-  <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_EMAIL_TOKEN} />
+  <input
+    type="hidden"
+    name="access_key"
+    value={import.meta.env.PUBLIC_EMAIL_TOKEN}
+  />
   <!-- Create your free access key from https://web3forms.com/ -->
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
@@ -18,8 +22,8 @@ import Button from "./ui/button.astro";
       type="text"
       placeholder="ФИО"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
-      name="name"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      name="ФИО"
     />
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
       Как к вам обращаться?
@@ -29,10 +33,10 @@ import Button from "./ui/button.astro";
     <label for="email_address" class="sr-only">Email ящик</label><input
       id="email_address"
       type="email"
-      placeholder="blabla@gmail.com"
-      name="email"
+      placeholder="Email ящик"
+      name="Почта"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     />
     <div class="empty-feedback text-red-400 text-sm mt-1">
       Не забудьте указать почту (электронную).
@@ -41,16 +45,70 @@ import Button from "./ui/button.astro";
       Странная у вас почта.
     </div>
   </div>
+  <div class="mb-5">
+    <label for="pet_name" class="sr-only">Имя Песика</label><input
+      id="pet_name"
+      type="text"
+      placeholder="Имя песика или ссылку на него"
+      name="Имя песика"
+      required
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+    />
+    <div class="empty-feedback text-red-400 text-sm mt-1">
+      Не забудьте указать имя песика.
+    </div>
+  </div>
+  <div class="mb-6">
+    <div class="flex items-center mb-2">
+      <input
+        id="default-radio-1"
+        type="radio"
+        value="Оплата питания и проживания"
+        name="Вид помощи"
+        checked
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="default-radio-1"
+        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Оплата питания и проживания</label
+      >
+    </div>
+    <div class="flex items-center mb-2">
+      <input
+        id="default-radio-2"
+        type="radio"
+        value="Оплата лечения в случае болезни"
+        name="Вид помощи"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="default-radio-2"
+        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Оплата лечения в случае болезни</label
+      >
+    </div>
+    <div class="flex items-center">
+      <input
+        id="default-radio-3"
+        type="radio"
+        value="Оплата пиара подопечного"
+        name="Вид помощи"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="default-radio-3"
+        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Оплата пиара подопечного</label
+      >
+    </div>
+  </div>
   <div class="mb-3">
     <textarea
-      name="message"
-      required
-      placeholder="текст"
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      name="Доп. сообщение"
+      placeholder="если есть что еще добавить, пишите тут"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none h-24 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     ></textarea>
-    <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Извините, я вас не расслышал
-    </div>
   </div>
   <Button type="submit" size="lg" block>Отправить</Button>
   <div id="result" class="mt-3 text-center"></div>
@@ -105,7 +163,8 @@ import Button from "./ui/button.astro";
         let json = await response.json();
         if (response.status == 200) {
           result.classList.add("text-green-500");
-          result.innerHTML = "Все ушло и мы в скором времени ознакомимся с вашим письмом. Благодарим за ваш вклад.";
+          result.innerHTML =
+            "Все ушло и мы в скором времени ознакомимся с вашим письмом. Благодарим за ваш вклад.";
         } else {
           console.log(response);
           result.classList.add("text-red-500");
@@ -114,7 +173,8 @@ import Button from "./ui/button.astro";
       })
       .catch((error) => {
         console.log(error);
-        result.innerHTML = "Что-то случилось непредвиденное, попробуйте нам просто позвонить!";
+        result.innerHTML =
+          "Что-то случилось непредвиденное, попробуйте нам просто позвонить!";
       })
       .then(function () {
         form.reset();

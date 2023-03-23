@@ -3,35 +3,40 @@ import { Image } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import { getPets } from "@lib/api";
 import { IPet } from "env";
-import  showdown from 'showdown';
+import showdown from "showdown";
 
 const converter = new showdown.Converter();
 
 export async function getStaticPaths() {
-    const data = await getPets() as {pets: IPet[]}
+  const data = (await getPets()) as { pets: IPet[] };
 
-    return data.pets.map((pet) => ({
-        params: {id: pet.id}, 
-        props: {pet}
-    }))
+  return data.pets.map((pet) => ({
+    params: { id: pet.id },
+    props: { pet },
+  }));
 }
 
 const { pet } = Astro.props;
 ---
+
 <Layout title={pet.name}>
-    <section class="p-10">
+  <section class="p-10">
+    <div class="grid md:grid-cols-2 mt-16 gap-16">
+      <div>
         <Image
-            src={pet.picture.url}
-            alt={pet.name}
-            width={600}
-            height='auto'
-            format="avif"
-            class="w-full rounded-md"
+          src={pet.picture.url}
+          alt={pet.name}
+          width={600}
+          height="auto"
+          format="avif"
+          class="w-full rounded-md"
         />
+      </div>
+      <div>
         <h1 class="leading-6 text-2xl mb-5">{pet.name}</h1>
         <p>{pet.intro}</p>
-        <article
-            set:html={converter.makeHtml(pet.bio)}
-        ></article>
-    </section>
+        <article set:html={converter.makeHtml(pet.bio)} />
+      </div>
+    </div>
+  </section>
 </Layout>

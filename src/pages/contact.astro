@@ -10,31 +10,31 @@ import Contactform from "@components/contactform.astro";
 <Layout title="Contact">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Связаться с нами</Fragment>
-      <Fragment slot="desc">Если возникли какие то вопросы, мы с радостью ответим.</Fragment>
+      <Fragment slot="title">Хотите стать опекуном</Fragment>
+      <Fragment slot="desc">
+        Если возникли какие то вопросы, мы с радостью ответим.
+      </Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16 mb-5">
-      <div>
-        <h2 class="font-medium text-2xl text-gray-800">Контакты</h2>
-        <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Есть что сказать или что-то узнать? Мы с радостью поможем. Заполните поля или свяжитесь с нами в социальных сетях
+    <div class="grid md:grid-cols-2 mx-auto max-w-4xl mt-16 mb-12 gap-12">
+      <div class="bg-neutral-200 px-4 py-3">
+        <h2 class="font-medium text-2xl text-gray-800">
+          Шаги для опекунов/кураторов
+        </h2>
+        <p class="text-gray-600 leading-relaxed mt-3">
+          Если вам понравилась собака, но вы не можете взять её домой, то можно
+          стать её куратором (опекуном).
         </p>
-        <div class="mt-5">
-          <div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>ул Первомайская 17, г. Калининград 93063</span>
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:hello@vmeste39.ru"
-              >hello@vmeste39.ru</a
-            >
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /><a
-              href="tel:+7 (987) 4587 899">+7 (987) 4587 899</a
-            >
-          </div>
-        </div>
+        <ol class="list-decimal mt-8 pl-4 flex flex-col gap-2">
+          <li>Выбираете животное.</li>
+          <li>
+            Ежемесячно переводите на покупку корма и обработок для этого
+            животного, либо привозите в приют корм и обработки.
+          </li>
+          <li>По желанию помогаете в поиске новых хозяев (например, пиаром)</li>
+          <li>По желанию можно приезжать общаться и гулять с питомцем.</li>
+          <li>Можно стать опекуном одного животного или сразу нескольких.</li>
+        </ol>
       </div>
       <div>
         <Contactform />

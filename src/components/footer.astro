@@ -1,11 +1,15 @@
+---
+import { Icon } from "astro-icon";
+---
+
 <footer
   class="bg-neutral-100 text-center dark:bg-neutral-600 lg:text-left mt-5">
   <div
-    class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500">
+    class="flex items-center justify-center md:justify-start border-b-2 border-neutral-200 p-6 dark:border-neutral-500">
     <div class="mr-12 hidden lg:block">
       <span>Мы в социальных сетях:</span>
     </div>
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center md:justify-start items-center">
       <a
         href="https://vk.com/ko_sao_komanda"
         class="mr-6 text-neutral-600 dark:text-neutral-200"
@@ -56,32 +60,22 @@
     </div>
   </div>
   <div class="container p-6">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid lg:grid-cols-[300px_1fr_1fr] gap-8">
       <div class="mb-6">
         <h5
           class="mb-2.5 font-bold uppercase text-neutral-800 dark:text-neutral-200">
-          Links
+          Полезные Ссылки
         </h5>
 
         <ul class="mb-0 list-none">
           <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 1</a
+            <a href="/contact" class="text-neutral-800 dark:text-neutral-200"
+              >Стать Опекуном</a
             >
           </li>
           <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 2</a
-            >
-          </li>
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 3</a
-            >
-          </li>
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 4</a
+            <a href="/documents" class="text-neutral-800 dark:text-neutral-200"
+              >Документы</a
             >
           </li>
         </ul>
@@ -90,31 +84,24 @@
       <div class="mb-6">
         <h5
           class="mb-2.5 font-bold uppercase text-neutral-800 dark:text-neutral-200">
-          Links
+          Контакты
         </h5>
 
-        <ul class="mb-0 list-none">
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 1</a
-            >
-          </li>
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 2</a
-            >
-          </li>
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 3</a
-            >
-          </li>
-          <li>
-            <a href="#!" class="text-neutral-800 dark:text-neutral-200"
-              >Link 4</a
-            >
-          </li>
-        </ul>
+        <div
+          class="flex items-center justify-center md:justify-start mt-2 space-x-2">
+          <Icon class="w-4 h-4" name="uil:map-marker" />
+          <span>ул Первомайская 17, г. Калининград 93063</span>
+        </div><div
+          class="flex items-center justify-center md:justify-start mt-2 space-x-2">
+          <Icon class="w-4 h-4" name="uil:envelope" /><a
+            href="mailto:hello@vmeste39.ru">hello@vmeste39.ru</a
+          >
+        </div><div
+          class="flex items-center justify-center md:justify-start mt-2 space-x-2">
+          <Icon class="w-4 h-4" name="uil:phone" /><a
+            href="tel:+7 (987) 4587 899">+7 (987) 4587 899</a
+          >
+        </div>
       </div>
 
       <div class="mb-6">
