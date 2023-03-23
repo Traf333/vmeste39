@@ -2,133 +2,16 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Pricing from "@components/pricing.astro";
-import { log } from "astro/dist/core/logger/core";
-
-const pricing = [
-  {
-    name: "Personal",
-    price: "Free",
-    popular: false,
-    features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "/",
-    },
-  },
-  {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
-    popular: true,
-    features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "#",
-    },
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    popular: false,
-    features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
-    ],
-    button: {
-      text: "Contact us",
-      link: "/contact",
-    },
-  },
-];
-
-const handlePayment = () => {
-  console.log(window.cp, 'sdf')
-  let widget = new window.cp.CloudPayments();
-    widget.pay('auth', // или 'charge'
-        { //options
-            publicId: import.meta.env.PUBLIC_CP_ID, //id из личного кабинета
-            description: 'Оплата товаров в example.com', //назначение
-            amount: 100, //сумма
-            currency: 'RUB', //валюта
-            accountId: 'user@example.com', //идентификатор плательщика (необязательно)
-            invoiceId: '1234567', //номер заказа  (необязательно)
-            email: 'user@example.com', //email плательщика (необязательно)
-            skin: "mini", //дизайн виджета (необязательно)
-            autoClose: 3, //время в секундах до авто-закрытия виджета (необязательный)
-            data: {
-                myProp: 'myProp value'
-            },
-            payer: { 
-                firstName: 'Тест',
-                lastName: 'Тестов',
-                middleName: 'Тестович',
-                birth: '1955-02-24',
-                address: 'тестовый проезд дом тест',
-                street: 'Lenina',
-                city: 'MO',
-                country: 'RU',
-                phone: '123',
-                postcode: '345'
-            }
-        },
-        {
-            onSuccess: function (options) { // success
-                //действие при успешной оплате
-            },
-            onFail: function (reason, options) { // fail
-                //действие при неуспешной оплате
-            },
-            onComplete: function (paymentResult, options) { //Вызывается как только виджет получает от api.cloudpayments ответ с результатом транзакции.
-                //например вызов вашей аналитики Facebook Pixel
-            }
-        }
-    )
-}
+import DonationForm from "@components/DonationForm.svelte";
 ---
 
 <Layout title="Pricing">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Как нам помочь</Fragment>
-      <Fragment slot="desc">
-        Деньгами, руками, идеями
-      </Fragment>
+      <Fragment slot="desc">Деньгами, руками, идеями</Fragment>
     </Sectionhead>
 
-    <!-- <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <Pricing plan={item} />)}
-    </div> -->
-    <p>Тут будет несколько секций о том как можно помочь фонду.</p>
-    <p>Тут будет несколько секций о том как можно помочь фонду.</p>
-    <p>Тут будет несколько секций о том как можно помочь фонду.</p>
-    <p>Тут будет несколько секций о том как можно помочь фонду.</p>
-    Список разных видов помощи
-    <button @click="handlePayment">
-      Помочь Фонду
-    </button>
+    <DonationForm client:load />
   </Container>
 </Layout>
-
