@@ -91,7 +91,7 @@ const menuitems = [
                 <li>
                   <a
                     href={item.path}
-                    class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
+                    class="flex text-xl md:text-[18px] lg:px-3 py-2 text-gray-600 hover:text-gray-900">
                     {item.title}
                   </a>
                 </li>
@@ -100,11 +100,13 @@ const menuitems = [
           ))
         }
         <li>
-          <a
+          <Link
             href="/donation"
-            class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900 md:hidden font-bold">
+            style="cta"
+            size="md"
+            class="mt-4 w-full block md:hidden bg-red-600 text-white text-xl">
             Помочь Фонду
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

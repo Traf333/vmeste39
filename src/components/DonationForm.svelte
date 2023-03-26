@@ -51,7 +51,7 @@
       Мы будем рады небольшой, но ежемесячной помощи - это позволит нам
       увереннее чувствовать себя и надёжнее строить планы нашей работы.
     </div>
-    <div class="flex gap-4 mb-5">
+    <div class="flex flex-wrap gap-4 mb-5">
       {#each amounts as amount (amount)}
         <div
           role="button"
@@ -75,7 +75,7 @@
         id="amount"
         type="text"
         placeholder="Другая сумма, ₽"
-        class="px-4 py-3 border-2 text-blue-500 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+        class="w-full md:w-auto px-4 py-3 border-2 text-blue-500 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
         class:border-blue-500={formData.otherAmount > 0}
         on:keyup={(e) => handleOtherAmountChange(Number(e.target.value))} />
     </div>
