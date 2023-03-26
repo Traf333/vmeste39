@@ -77,7 +77,7 @@
         placeholder="Другая сумма, ₽"
         class="px-4 py-3 border-2 text-blue-500 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
         class:border-blue-500={formData.otherAmount > 0}
-        on:keypress={(e) => handleOtherAmountChange(Number(e.target.value))} />
+        on:keyup={(e) => handleOtherAmountChange(Number(e.target.value))} />
     </div>
 
     <div class="mb-5">
