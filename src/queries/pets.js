@@ -8,6 +8,8 @@ export const petsQuery = gql`
             intro
             picture {
                 url
+                width
+                height
             }
         }
 

@@ -5,8 +5,7 @@ import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 import { getPets } from "@lib/api";
 
-const {pets} = (await getPets());
-
+const { pets } = await getPets();
 ---
 
 <Layout title="Наши Подопечные">
@@ -14,30 +13,34 @@ const {pets} = (await getPets());
     <Sectionhead>
       <Fragment slot="title">Наши Подопечные</Fragment>
       <Fragment slot="desc">
-        Группа занимается помощью бездомным животным г. Калининграда и Калининградской области.
-За редким исключением это могут быть домашние животные.
-        </Fragment>
+        Группа занимается помощью бездомным животным г. Калининграда и
+        Калининградской области. За редким исключением это могут быть домашние
+        животные.
+      </Fragment>
     </Sectionhead>
-    <main class="mt-16 mb-16">
+    <main class="mb-16">
       <ul class="flex flex-wrap justify-between">
         {
           pets.map((pet) => (
-            <li class="mb-8">
+            <li
+              class="mt-16 w-[300px] h-[300px]"
+              style="background-color: #ccc;">
               <a href={`/pets/${pet.id}`}>
-                    <Image
-                      src={pet.picture.url}
-                      alt={pet.name}
-                      width="auto"
-                      height="200"
-                      format="avif"
-                      class="w-full rounded-md"
-                    />
+                <Image
+                  src={pet.picture.url}
+                  alt={pet.name}
+                  background="#cccccc"
+                  width={300}
+                  fit="cover"
+                  position="top"
+                  height={300}
+                  format="avif"
+                  class="w-full rounded-md"
+                />
 
-
-                    <h3 class="text-2xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {pet.name}
-                    </h3>
-
+                <h3 class="text-2xl font-semibold leading-snug tracking-tight mt-1 text-black">
+                  {pet.name}
+                </h3>
               </a>
             </li>
           ))

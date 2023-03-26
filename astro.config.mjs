@@ -16,5 +16,5 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), alpinejs(), image(), mdx(), svelte()]
+  integrations: [tailwind(), alpinejs(), image({serviceEntryPoint: '@astrojs/image/sharp'}), mdx(), svelte()]
 });

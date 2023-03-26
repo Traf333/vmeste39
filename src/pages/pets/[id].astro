@@ -27,7 +27,7 @@ const { pet } = Astro.props;
           src={pet.picture.url}
           alt={pet.name}
           width={600}
-          height="auto"
+          aspectRatio={`${pet.picture.width}:${pet.picture.height}`}
           format="avif"
           class="w-full rounded-md"
         />

@@ -2,6 +2,8 @@
 
 export interface IPicture {
     url: string;
+    width: number;
+    height: number;
 }
 
 export interface IProject {
