@@ -23,7 +23,7 @@ const chargeOnce = (params: TPaymentData) => {
     {
       //options
       publicId: import.meta.env.PUBLIC_CP_ID, //id из личного кабинета
-      description: "Пожертвование на уставную деятельность", //назначение
+      description: "Пожертвование на помощь большим песикам", //назначение
       amount: params.amount || params.otherAmount, //сумма
       currency: "RUB", //валюта
       accountId: params.email, //идентификатор плательщика (необязательно)
@@ -71,7 +71,7 @@ const chargeRecurrent = (params: TPaymentData) => {
     {
       // options
       publicId: import.meta.env.PUBLIC_CP_ID, //id из личного кабинета
-      description: "Подписка на ежемесячный доступ к сайту example.com", //назначение
+      description: "Пожертвование на помощь большим песикам", //назначение
       amount: params.amount || params.otherAmount, //сумма
       currency: "RUB", //валюта
       accountId: params.email, //идентификатор плательщика (обязательно для создания подписки)

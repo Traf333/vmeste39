@@ -51,13 +51,13 @@
       Мы будем рады небольшой, но ежемесячной помощи - это позволит нам
       увереннее чувствовать себя и надёжнее строить планы нашей работы.
     </div>
-    <div class="flex flex-wrap gap-4 mb-5">
+    <div class="flex flex-wrap gap-2 md:gap-4 mb-5">
       {#each amounts as amount (amount)}
         <div
           role="button"
           on:keypress={() => handleAmountChange(amount)}
           on:click={() => handleAmountChange(amount)}
-          class="px-3 py-2 border-2 border-solid cursor-pointer flex-1 text-center rounded leading-8"
+          class="px-2 md:px-3 py-2 border-2 border-solid cursor-pointer flex-1 text-center rounded leading-8"
           class:border-blue-500={amount === formData.amount}>
           <span
             class="text-lg"
