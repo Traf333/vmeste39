@@ -7,17 +7,14 @@ import { getPosts } from "@lib/api";
 import { getFormattedDate } from "@utils/all";
 import { log } from "astro/dist/core/logger/core";
 
-
-const {posts} = (await getPosts());
+const { posts } = await getPosts();
 ---
 
 <Layout title="Новости">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Новости Фонда</Fragment>
-      <Fragment slot="desc">
-        Описание новостей
-      </Fragment>
+      <Fragment slot="desc">Описание новостей</Fragment>
     </Sectionhead>
     <main class="mt-16 mb-16">
       <ul class="grid gap-16 max-w-4xl mx-auto">
@@ -44,8 +41,6 @@ const {posts} = (await getPosts());
                     <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
                       {post.title}
                     </h2>
-
-
                   </div>
                 </div>
               </a>
