@@ -2,9 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@lib/api";
 import { IPost } from "env";
-import showdown from "showdown";
-
-const converter = new showdown.Converter();
 
 export async function getStaticPaths() {
   const data = (await getPosts()) as { posts: IPost[] };
@@ -21,6 +18,5 @@ const { post } = Astro.props;
 <Layout title={post.title}>
   <section class="p-10">
     <h1 class="leading-6 text-2xl mb-5">Good dog, {post.title}!</h1>
-    <article set:html={converter.makeHtml(post.content)} />
   </section>
 </Layout>

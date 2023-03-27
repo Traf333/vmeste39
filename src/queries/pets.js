@@ -6,6 +6,7 @@ export const petsQuery = gql`
             id
             name
             intro
+            bio
             picture {
                 url
                 width

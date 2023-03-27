@@ -3,9 +3,7 @@ import { Image } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import { getPets } from "@lib/api";
 import { IPet } from "env";
-import showdown from "showdown";
-
-const converter = new showdown.Converter();
+import { marked } from "marked";
 
 export async function getStaticPaths() {
   const data = (await getPets()) as { pets: IPet[] };
@@ -35,7 +33,7 @@ const { pet } = Astro.props;
       <div>
         <h1 class="leading-6 text-2xl mb-5">{pet.name}</h1>
         <p>{pet.intro}</p>
-        <article set:html={converter.makeHtml(pet.bio)} />
+        <article set:html={marked.parse(pet.bio)} />
       </div>
     </div>
   </section>
